@@ -29,13 +29,6 @@ export const createVehicle = async (vehicleData) => {
 
 
 
-
-
-
-
-
-
-
 // Obtener todos los vehiculo
 export const getAllVehicles = async () => {
   await delay(300); // Simula un retardo
