@@ -1,9 +1,12 @@
 import React from 'react'
+import VehicleList from '../Components/VehicleList';
 
 function InspectionVehicle() {
   return (
-    <div>InspectionVehicle</div>
+    <>
+      <VehicleList />
+    </>
   )
 }
 
-export default InspectionVehicle
+export default InspectionVehicle;

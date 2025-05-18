@@ -138,7 +138,13 @@ const RegisterVehicle = () => {
                     type="text"
                     placeholder='Ingresa el VIN'
                     className='form-control'
-                    {...register("vin")}
+                    maxLength={17}
+                    {...register("vin", {
+                      
+                    
+                    
+                    
+                    })}
 
                   />
                 
@@ -173,7 +179,10 @@ const RegisterVehicle = () => {
                   type='text'
                   placeholder='Ej: ABC123'
                   className='form-control' 
-                  {...register("carPlate")}
+                  maxLength={7}
+                  {...register("carPlate", {
+                    required: {value: true, message: "Ingresa un numero de telefono"}
+                  })}
 
                 />
               </label>
