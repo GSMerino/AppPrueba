@@ -1,0 +1,86 @@
+:root{
+  --font-color-primary: #042D6F;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.w-100{
+  width: 100%;
+}
+
+.container__app{
+  background-color: #EDEDED;
+  min-height: 100vh;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(89, 49, 150);
+  color: #fff;
+  height: 67px;
+  padding: 1em 1.8em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  position: sticky;
+  top: 0;
+}
+.header__title{
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+
+.header__menu{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0;
+}
+.header__menu li a{
+  color: #fff;
+  list-style: none;
+}
+
+.containerForm__Vehicle {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.btn-addVehicle{
+  background-color: rgb(89, 49, 150);
+  padding: 10px 2.5rem;
+  border-radius: 5px;
+  color: #fff;
+}
+.border-dashed{
+  height: 2px;
+  border: 2px dashed rgb(89, 49, 150);
+  color: rgb(89, 49, 150);
+}
+.font-bold{
+  font-family: 'Poppins', sans-serif;
+  color: var(--font-color-primary);
+  font-size: 1rem;
+  font-weight: 500;
+}
+.header__menu--itemNav{
+  text-decoration: none;
+}
+
+
+.homeContent{
+  min-height: 100vh;
+  background-color: red;
+  
+}
