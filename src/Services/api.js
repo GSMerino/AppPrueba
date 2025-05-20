@@ -1,4 +1,4 @@
-// src/api/userApi.js
+
 
 const STORAGE_KEY = 'vehicleRegistrations';
 
@@ -16,18 +16,12 @@ export const createVehicle = async (vehicleData) => {
   const newVehicle = { 
     id: Date.now(), 
     ...vehicleData, // Usamos el parámetro que recibimos
-    createdAt: new Date().toISOString() // Agregamos fecha de creación
+    createdAt: new Date().toISOString() 
   };
   vehicles.push(newVehicle);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(vehicles)); // Guardamos 'vehicles'
-  return newVehicle; // Retornamos el nuevo vehículo
+  return newVehicle; 
 };
-
-
-
-
-
-
 
 // Obtener todos los vehiculo
 export const getAllVehicles = async () => {
@@ -35,12 +29,16 @@ export const getAllVehicles = async () => {
   return JSON.parse(localStorage.getItem(STORAGE_KEY));
 };
 
+
+
+
+
 // Obtener un vehiculo por ID
-export const getVehicleById = async (id) => {
-  await delay(200);
-  const users = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  return users.find(user => user.id === id);
-};
+// export const getVehicleById = async (id) => {
+//   await delay(200);
+//   const users = JSON.parse(localStorage.getItem(STORAGE_KEY));
+//   return users.find(user => user.id === id);
+// };
 
 
 

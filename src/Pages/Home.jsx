@@ -1,26 +1,62 @@
 import React from 'react'
 import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
+import bannerImage from '../assets/auto-nissan.jpg';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <section className='container mt-4'>
-      <motion.div
-        variants={fadeIn("up", 0.3)}
-        initial="hidden"
-        whileInView={"show"}
-        viewport={{ once: false, amount: 0.7 }}
-      >
-        <div className=' homeContent'>
-          <div className='sectionLeft'>
-            <h2>Titulo</h2>
-          </div>
-          <div className='sectionRigth'>
-            <h2>Imagen</h2>
-          </div>
-      </div>
-      </motion.div>
+    <section className='container__Home'>
 
+      <div className='bannerHome'>
+        <div className='sectionHomeLeft'>
+          <motion.div
+            variants={fadeIn("right", 0.3)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: false, amount: 0.7 }}
+            className="content-bannerLeft"
+          >
+            <div className='d-flex flex-column gap-2'>
+              
+              <div className='d-flex flex-column'>
+                <h1 className='banner-title'>Bienvenido al taller</h1>
+                <p className='banner-description'>Tu Auto en Buenas Manos</p>
+              </div>
+
+              <div className='d-flex flex-column gap-5'>
+                <p className='mb-0'>
+                  ¿Tu auto ya alcanzó los 10,000 km o cumplió 6 meses desde su último servicio? En nuestro taller, realizamos el mantenimiento periódico oficial que exigen las marcas. Nuestros técnicos certificados revisan a detalle: frenos, llantas, batería, fluidos (aceite, anticongelante) y más, siguiendo un checklist predefinido para garantizar el óptimo funcionamiento de tu vehículo. ¡No arriesgues tu garantía y agenda hoy mismo!
+                </p>
+                <div className='d-flex justify-content-center align-items-center'>
+                  
+                  <Link className='banner-btn' to={"/Register"}>
+                    Comenzar
+                  </Link>
+                    
+                  
+                </div>
+
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        <div className='sectionHomeRigth'>
+
+          <motion.div 
+            className="content-img"
+            variants={fadeIn("left", 0.3)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: false, amount: 0.7 }}
+          >
+            <div className='img-banner'>
+              <img className='img-cover' src={bannerImage} />
+            </div>
+          </motion.div>
+        </div>
+      </div>
     </section>
   )
 }

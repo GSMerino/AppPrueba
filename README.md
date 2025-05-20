@@ -1,5 +1,6 @@
 # Prueba tecnica Front
 
+## Herramientas
 
 Esta es una aplicación web para gestionar Vehiculos. Utiliza las siguientes librerias: 
 
@@ -12,6 +13,10 @@ Esta es una aplicación web para gestionar Vehiculos. Utiliza las siguientes lib
 * Bootstrap: Es un framework de CSS que nos facilita en la creacion de interfaces web y aplicaciones web.
 
 * framer-motion: Es una libreria de animación para React donde nos permite crear animaciones fluidas y personalizadas en la aplicaciones web.
+
+* react-toastify: Es una libreria popular para el control de alertas.
+
+* 
 
 ## Instalación
 
