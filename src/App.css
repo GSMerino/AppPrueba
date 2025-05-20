@@ -11,13 +11,19 @@
 body {
   font-family: 'Poppins', sans-serif;
 }
-
+.container__Home{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+  width: 100%;
+}
 .w-100{
   width: 100%;
 }
 
 .container__app{
-  background-color: #EDEDED;
+  /* background-color: #EDEDED; */
   min-height: 100vh;
 }
 
@@ -25,8 +31,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(89, 49, 150);
-  color: #fff;
+  background-color: #002d58;
+  color: #0000;
   height: 67px;
   padding: 1em 1.8em;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -34,9 +40,11 @@ body {
   top: 0;
 }
 .header__title{
-  font-family: 'Barlow Condensed', sans-serif;
+  text-decoration: none;
+  font-family: 'Racing Sans One', cursive;
+  color: #fff;
   font-weight: 600;
-  letter-spacing: 1px;
+  margin-bottom: 0;
 }
 
 
@@ -50,6 +58,8 @@ body {
 .header__menu li a{
   color: #fff;
   list-style: none;
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .containerForm__Vehicle {
@@ -58,7 +68,7 @@ body {
   gap: 1.5rem;
 }
 .btn-addVehicle{
-  background-color: rgb(89, 49, 150);
+  background-color: #002d58;
   padding: 10px 2.5rem;
   border-radius: 5px;
   color: #fff;
@@ -75,12 +85,102 @@ body {
   font-weight: 500;
 }
 .header__menu--itemNav{
+  font-family: 'Racing Sans One', cursive;
+  font-size: 1.1rem;
   text-decoration: none;
 }
 
 
-.homeContent{
-  min-height: 100vh;
-  background-color: red;
-  
+.contentDetailVehicle{
+  display: flex;
+  flex-direction: column;
+  background-color: #EDEDED;
+  padding: 1rem;
+  border-radius: 16px;
+}
+.bannerHome{
+  width: 100%;
+  height: 75vh;
+  display: flex;
+}
+.sectionHomeLeft{
+  width: 50%;
+}
+.sectionHomeRigth{
+  width: 50%;
+}
+.position-relative{
+  position: relative;
+}
+.sectionHomeRigth{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.content-img{
+  height: 100%;
+  width: 100%;
+}
+.img-banner{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img-cover{
+  height: 100%;
+  width: 100%;
+}
+.banner-title{
+  font-family: 'Racing Sans One', cursive;
+}
+
+.content-bannerLeft{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.banner-description{
+  margin-bottom: 0;
+  font-family: 'Racing Sans One', cursive;
+}
+.banner-btn{
+  text-decoration: none;
+  padding: 10px 2rem;
+  background-color: #002d58;
+  color: #fff;
+  border-radius: 3px 3px 15px 3px;
+}
+.banner-btn:hover{
+  color: #fff;
+}
+.titleRegister{
+  font-family: 'Racing Sans One', cursive;
+  color: #002d58;
+}
+
+.titleMisPendientes{
+  font-family: 'Racing Sans One', cursive;
+  color: #002d58;
+}
+.headerLogo{
+  text-decoration: none;
+  color: #fff;
+}
+.headerLogo:hover{
+  color: #fff;
+}
+.gap-50{
+  gap: 50px;
+}
+.contentImage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+
 }

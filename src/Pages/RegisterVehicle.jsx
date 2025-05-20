@@ -3,8 +3,10 @@ import { useForm } from 'react-hook-form';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { createVehicle} from '../Services/api';
+import { motion } from "framer-motion";
+import { fadeIn } from "../variants";
 
-const RegisterVehicle = () => {
+const RegisterVehicle = () => { 
   const maxCommentLength = 80;
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,7 +44,7 @@ const RegisterVehicle = () => {
 
       const response = await createVehicle(VehicleData);
     
-    // 3. Manejar éxito
+    
     console.log("Vehículo creado:", response);
     setSubmitSuccess(true);
     reset();
@@ -60,16 +62,30 @@ const RegisterVehicle = () => {
   return (
 
     <section className="container mt-4 p-0"  >
+
+
       <div className='w-100 d-flex flex-column gap-4'>
 
-  
-  
-        <div className='d-flex flex-column'>
-          <h2 className='m-0'>Registro de Vehículo</h2>
-         
-        </div>
+        <motion.div
+          variants={fadeIn("right", 0.3)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.7 }}
+        >
+          <div className='d-flex flex-column'>
+            <h2 className='m-0 titleRegister'>Registro de Vehículo</h2>
+          </div>
+        </motion.div>
+
         
-        <form onSubmit={handleSubmit(onSubmit)} className="containerForm__Vehicle p-0" >
+        <motion.div
+          variants={fadeIn("up", 0.3)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.7 }}
+        >
+
+          <form onSubmit={handleSubmit(onSubmit)} className="containerForm__Vehicle p-0" >
 
           <div className='row'>
             <div className='col-md-4'>
@@ -206,6 +222,13 @@ const RegisterVehicle = () => {
               </label>
             </div>
 
+            <div className='col-md-4'>
+              <div className='gap-4 contentImage'>
+                <p className='mb-0'>Subir imagen</p>
+
+              </div>
+            </div>
+
 
           </div>
 
@@ -226,7 +249,12 @@ const RegisterVehicle = () => {
 
         
 
-        </form>
+          </form>
+
+        </motion.div>
+
+
+
       </div>
 
       
