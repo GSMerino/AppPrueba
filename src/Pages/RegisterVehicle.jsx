@@ -1,18 +1,34 @@
-import { useState } from 'react'; 
+import { useState, useRef  } from 'react'; 
 import { useForm } from 'react-hook-form';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { createVehicle} from '../Services/api';
 import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterVehicle = () => { 
-  const maxCommentLength = 80;
-
+  //estados para imagen
+  const [imageBase64, setImageBase64] = useState('');
+  const maxCommentLength = 70;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+         console.log(reader.result);
+        setImageBase64(reader.result); // Aquí se guarda la imagen como base64
+      };
+      reader.readAsDataURL(file);
+    }
+
+  };
 
   const {
     register,
@@ -39,15 +55,26 @@ const RegisterVehicle = () => {
         modelYear: data.modelYear,
         modelVehicle: data.modelVehicle,
         carPlate: data.carPlate.toUpperCase(),
-        service: data.service.substring(0, maxCommentLength)
+        service: data.service.substring(0, maxCommentLength),
+        image: imageBase64
       }
 
       const response = await createVehicle(VehicleData);
     
     
-    console.log("Vehículo creado:", response);
-    setSubmitSuccess(true);
-    reset();
+      console.log("Vehículo creado:", response);
+      
+      toast.success('¡Vehículo registrado correctamente!', {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setSubmitSuccess(true);
+      reset();
     
     }catch (error) {
       console.log("Error al registrar", error);
@@ -64,7 +91,7 @@ const RegisterVehicle = () => {
     <section className="container mt-4 p-0"  >
 
 
-      <div className='w-100 d-flex flex-column gap-4'>
+      <div className='w-100 d-flex flex-column gap-4 mb-5'>
 
         <motion.div
           variants={fadeIn("right", 0.3)}
@@ -108,12 +135,23 @@ const RegisterVehicle = () => {
             <div className='col-md-4'>
               <div className='d-flex flex-column gap-2 font-bold'>
                 <label>Marca:</label>
-                <select name="marca" defaultValue="" className='form-control' {...register("brand")}>
+                <select  defaultValue="" 
+                  className={`form-control ${errors.brand ? 'is-invalid' : ''}`}
+                  {...register("brand",{
+                    required: {value: true, message: "El campo es requerido"},
+                    
+                  })}
+                
+                >
                   <option value="">Seleccione una marca</option>
                   <option value="Nissan">Nissan</option>
                   <option value="Hyundai">Hyundai</option>
                   <option value="Mazda">Mazda</option>
                 </select>
+                {errors.brand &&(
+                  <p className='mb-0 text-danger'>{errors.brand.message}</p>
+                )}
+
               </div>
 
             </div>
@@ -124,11 +162,11 @@ const RegisterVehicle = () => {
                   type='tel' 
                   placeholder='Ej: 0123456789' 
                   maxLength={10}
-                  className='form-control' 
+                  className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
                   {...register("phone", {
-                    required: {value: false, message: "El campo es requerido"},
+                    required: {value: true, message: "El campo es requerido"},
                     pattern: {
-                      value: /^[0-9]{10}$/, // Ajusta según el formato que necesites
+                      value: /^[0-9]{10}$/,
                       message: "Debe tener 10 dígitos numéricos"
                     },
                    
@@ -139,8 +177,10 @@ const RegisterVehicle = () => {
                     setValue("phone", numericValue, { shouldValidate: true });
                   
                   }}
-
                 /> 
+                {errors.phone && (
+                  <p className='text-danger mb-0'>{errors.phone.message}</p>
+                )}
               </label>
             </div>
           </div>
@@ -153,16 +193,19 @@ const RegisterVehicle = () => {
                   <input 
                     type="text"
                     placeholder='Ingresa el VIN'
-                    className='form-control'
+                    className={`form-control ${errors.vin ? 'is-invalid' : ''}`}
                     maxLength={17}
                     {...register("vin", {
-                      
+                      required: {value: true, message: "El campo es requerido"},  
                     
                     
                     
                     })}
 
                   />
+                  {errors.vin && (
+                    <p className='text-danger mb-0'>{errors.vin.message}</p>
+                  )}
                 
                 </label>
               </div>
@@ -171,7 +214,18 @@ const RegisterVehicle = () => {
               <div className='d-flex flex-column gap-2'>
                 <label className='d-flex flex-column gap-2 font-bold'>
                   Año del modelo:
-                  <input type='date' placeholder='Ingresa el Año' className='form-control' />
+                  <input type='date' 
+                    placeholder='Ingresa el Año' 
+                    className={`form-control ${errors.modelYear ? 'is-invalid' : ''}`}
+                    {...register("modelYear", {
+                      required: {value: true, message: "El campo es requerido"}
+                    })}
+                  />
+                  {errors.modelYear && (
+                    <p className='mb-0 text-danger'>{errors.modelYear.message}</p>
+                  
+                  )}
+                
                 </label>
               </div>
             </div>
@@ -181,10 +235,15 @@ const RegisterVehicle = () => {
                 <input 
                   type='text' 
                   placeholder='Ingresa el modelo del auto'
-                  className='form-control'
-                  {...register("modelVehicle")}
+                  className={`form-control ${errors.modelVehicle ? 'is-invalid' : ''}`}
+                  {...register("modelVehicle", {
+                    required: {value: true, message: "El campo es requerido"},
+                  })}
 
                 />
+                {errors.modelVehicle && (
+                  <p className='text-danger mb-0'>{errors.modelVehicle.message}</p>
+                )}
 
               </label>
             </div>
@@ -194,13 +253,16 @@ const RegisterVehicle = () => {
                 <input 
                   type='text'
                   placeholder='Ej: ABC123'
-                  className='form-control' 
+                  className={`form-control ${errors.carPlate ? 'is-invalid' : ''}`}
                   maxLength={7}
                   {...register("carPlate", {
-                    required: {value: true, message: "Ingresa un numero de telefono"}
+                    required: {value: true, message: "El campo es requerido"}
                   })}
-
                 />
+                {errors.carPlate && (
+                  <p className='text-danger mb-0'>{errors.carPlate.message}</p>
+                )}
+
               </label>
             </div>
           </div>
@@ -210,22 +272,48 @@ const RegisterVehicle = () => {
               <label className='d-flex flex-column gap-2 font-bold'>
                 Servicio a realizar:
                 <textarea 
-                  className='form-control'
+                  className={`form-control ${errors.service ? 'is-invalid' : ''}`}
                   placeholder='Agregar comentario'
                   rows={3}
                   {...register("service", {
+                    required: {value: true, message: "El campo es requerido"},
                     maxLength: maxCommentLength
                   })}
-
-                
                 />
+                {errors.service && (
+                  <p className='mb-0 text-danger'>{errors.service.message}</p>
+                )}
+
               </label>
             </div>
 
-            <div className='col-md-4'>
+            <div className='col-md-5'>
               <div className='gap-4 contentImage'>
-                <p className='mb-0'>Subir imagen</p>
+                <div className='d-flex gap-4 contentInput'>
 
+                  <input 
+                    type='file' 
+                    accept="image/*"
+                    className='d-none'
+                    id="vehicleImageInput"
+                    onChange={handleImageChange}
+                  />
+
+                  <label htmlFor="vehicleImageInput" className="btn btn-outline-secondary">
+                    📸 Seleccionar Imagen
+                  </label>
+
+                </div>
+                {imageBase64 && (
+                  <div className="contentImgSelected">
+                    <img 
+                      src={imageBase64} 
+                      alt="Vista previa"
+                      className='img-coverSelected' 
+                    />
+                  </div>
+                )}
+                                
               </div>
             </div>
 

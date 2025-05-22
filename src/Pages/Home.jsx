@@ -21,12 +21,12 @@ const Home = () => {
               
               <div className='d-flex flex-column'>
                 <h1 className='banner-title'>Bienvenido al taller</h1>
-                <p className='banner-description'>Tu Auto en Buenas Manos</p>
+                <p className='banner-subtitle'>Tu Auto en Buenas Manos</p>
               </div>
 
               <div className='d-flex flex-column gap-5'>
-                <p className='mb-0'>
-                  ¿Tu auto ya alcanzó los 10,000 km o cumplió 6 meses desde su último servicio? En nuestro taller, realizamos el mantenimiento periódico oficial que exigen las marcas. Nuestros técnicos certificados revisan a detalle: frenos, llantas, batería, fluidos (aceite, anticongelante) y más, siguiendo un checklist predefinido para garantizar el óptimo funcionamiento de tu vehículo. ¡No arriesgues tu garantía y agenda hoy mismo!
+                <p className='mb-0 banner-description'>
+                  ¿Tu auto ya alcanzó los 10,000 km o cumplió 6 meses desde su último servicio? En nuestro taller, realizamos el mantenimiento periódico oficial que exigen las marcas.
                 </p>
                 <div className='d-flex justify-content-center align-items-center'>
                   

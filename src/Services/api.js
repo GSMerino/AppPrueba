@@ -16,7 +16,8 @@ export const createVehicle = async (vehicleData) => {
   const newVehicle = { 
     id: Date.now(), 
     ...vehicleData, // Usamos el parámetro que recibimos
-    createdAt: new Date().toISOString() 
+    createdAt: new Date().toISOString(),
+    status: "Pendiente"
   };
   vehicles.push(newVehicle);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(vehicles)); // Guardamos 'vehicles'
@@ -34,11 +35,15 @@ export const getAllVehicles = async () => {
 
 
 // Obtener un vehiculo por ID
-// export const getVehicleById = async (id) => {
-//   await delay(200);
-//   const users = JSON.parse(localStorage.getItem(STORAGE_KEY));
-//   return users.find(user => user.id === id);
-// };
+export const getVehicleById = async (id) => {
+  
+  await delay(300); // Simula un retardo
+  const vehicles = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  console.log("Vehículos en localStorage:", vehicles);
+  const vehicle = vehicles.find(v => v.id === Number(id));
+  if (!vehicle) throw new Error("Vehículo no encontrado");
+  return vehicle;
+};  
 
 
 

@@ -5,6 +5,8 @@ import Home from './Pages/Home';
 import RegisterVehicle from './Pages/RegisterVehicle';
 import InspectionVehicle from './Pages/InspectionVehicle';
 import InspectionDetail from './Components/InspectionDetail';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -19,6 +21,19 @@ function App() {
             <Route path="/inspection/:vehicleId" element={<InspectionDetail />} />
           </Routes>
         </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          style={{top: '4.6rem'}}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+
       </main>
     </HashRouter>
   );

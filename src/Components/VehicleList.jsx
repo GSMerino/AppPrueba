@@ -40,7 +40,7 @@ const ListaVehiculos = () => {
       >
         <div className='contentDetailVehicle'>
           <h2 className='titleMisPendientes'>Mis pendientes</h2>
-          <span>Vehículos Registrados ({vehicles.length})</span>
+          <span className='subtitleVehicle'>Vehículos Registrados ({vehicles.length})</span>
         </div>
       </motion.div>
 
@@ -50,10 +50,9 @@ const ListaVehiculos = () => {
         <p>No hay vehículos registrados</p>
       ) : (
         <div className="table-responsive">
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                
+          <table className="table table-hover table-bordered">
+            <thead className=''>
+              <tr className='headerTable'>
                 <th>Cliente</th>
                 <th>Marca</th>
                 <th>Placa</th>
@@ -65,18 +64,25 @@ const ListaVehiculos = () => {
               {vehicles.map((vehicle) => (
                 <tr key={vehicle.id}>
                   
-                  <td>{vehicle.clientName}</td>
-                  <td>{vehicle.brand}</td>
-                  <td>{vehicle.carPlate}</td>
-                  <td>
-                    <button 
-                      onClick={() => navigate(`/inspection/${vehicle.id}`)}
-                      className="btn btn-sm btn-primary"
-                    >
-                      Inspeccionar
-                    </button>
+                  <td style={{ width: '150px' }}>{vehicle.clientName}</td>
+                  <td style={{ width: '150px' }}>{vehicle.brand}</td>
+                  <td style={{ width: '150px' }}>{vehicle.carPlate}</td>
+                  <td style={{ width: '150px'}}>
+                    <div className='d-flex justify-content-center'>
+                      <button 
+                        onClick={() => navigate(`/inspection/${vehicle.id}`)}
+                        className="btn btn-sm btn-primary"
+                      >
+                        <i className="bi bi-search me-1"></i> Inspeccionar
+                      </button>
+                    </div>
+
                   </td>
-                  
+                  <td className="action-cell">
+                    <span className="rounded-pill bg-pending pillStatus">
+                      <i className="bi bi-check-circle me-1"></i> {vehicle.status}
+                    </span>
+                  </td>
                 </tr>
               ))}
             </tbody>
