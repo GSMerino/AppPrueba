@@ -2,7 +2,7 @@
 
 ## Herramientas
 
-Esta es una aplicación web para gestionar Vehiculos. Utiliza las siguientes librerias: 
+Esta es una aplicación web para gestionar Vehiculos. Utiliza las siguientes librerias: w
 
 * React + vite: Utilizamos una combinacion que utiliza React, una biblioteca de JavaScript para construir interfaces de usuario, y Vite, una herramienta de compilacion y desarrollo web muy rápida.
 
@@ -16,22 +16,30 @@ Esta es una aplicación web para gestionar Vehiculos. Utiliza las siguientes lib
 
 * react-toastify: Es una libreria popular para el control de alertas.
 
-* 
+
 
 ## Instalación
 
-1. Clona este repositorio:
+1. Crea una carpeta
 
-Crea una carpeta en tus archivos locales.
+2. Clona este repositorio:
 
+```
+git clone https://github.com/GSMerino/AppPrueba.git <NOMBRE_DEL_PROYECTO>
+cd <NOMBRE_DEL_PROYECTO>
 
+```
 
-2. Instalacion de dependencias:
+3. Instalacion de dependencias:
+
+4. abre consola y en tu proyecto ejecuta el siguiente comando:
+
 
 ``` 
 npm install 
 
 ```
+
 
 ## Modo de Desarrollo
 

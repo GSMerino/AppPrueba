@@ -6,11 +6,13 @@ import { getVehicleById } from "../Services/api";
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const InspectionDetail = () => {    
 
     const location = useLocation();
-    const id = location.pathname.split("/").pop(); // Obtiene el último segmento de la URL
+    const id = location.pathname.split("/").pop(); 
     const [isInspectionCompleted, setIsInspectionCompleted] = useState(false);
     const [vehicle, setVehicle] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -82,7 +84,15 @@ const InspectionDetail = () => {
 
         localStorage.setItem("vehicleRegistrations", JSON.stringify(updatedVehicles));
 
-        alert("¡Inspección finalizada y guardada correctamente!");
+        toast.success('¡Inspección finalizada!', {
+                position: "top-right",
+                autoClose: 4000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
         setIsInspectionCompleted(true);
     };
 
