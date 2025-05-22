@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { createVehicle} from '../Services/api';
 import { motion } from "framer-motion";
-import { fadeIn } from "../variants";
+import { fadeIn } from "../Variants";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
