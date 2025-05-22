@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getAllVehicles} from '../Services/api';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
-import { fadeIn } from "../variants";
+import { fadeIn } from "../Variants";
 
 const ListaVehiculos = () => {
   const [vehicles, setVehicles] = useState([]);
