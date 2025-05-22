@@ -11,7 +11,7 @@ const Home = () => {
       <div className='bannerHome'>
         <div className='sectionHomeLeft'>
           <motion.div
-            variants={fadeIn("right", 0.3)}
+            variants={fadeIn("up", 0.3)}
             initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.7 }}
@@ -46,7 +46,7 @@ const Home = () => {
 
           <motion.div 
             className="content-img"
-            variants={fadeIn("left", 0.3)}
+            variants={fadeIn("up", 0.3)}
             initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.7 }}
