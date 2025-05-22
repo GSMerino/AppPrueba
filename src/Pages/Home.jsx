@@ -11,10 +11,10 @@ const Home = () => {
       <div className='bannerHome'>
         <div className='sectionHomeLeft'>
           <motion.div
-            variants={fadeIn("up", 0.3)}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: false, amount: 0.7 }}
+            // variants={fadeIn("up", 0.3)}
+            // initial="hidden"
+            // whileInView={"show"}
+            // viewport={{ once: false, amount: 0.7 }}
             className="content-bannerLeft"
           >
             <div className='d-flex flex-column gap-2'>
@@ -46,10 +46,10 @@ const Home = () => {
 
           <motion.div 
             className="content-img"
-            variants={fadeIn("up", 0.3)}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: false, amount: 0.7 }}
+            // variants={fadeIn("up", 0.3)}
+            // initial="hidden"
+            // whileInView={"show"}
+            // viewport={{ once: false, amount: 0.7 }}
           >
             <div className='img-banner'>
               <img className='img-cover' src={bannerImage} />
